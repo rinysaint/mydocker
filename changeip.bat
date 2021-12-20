@@ -1,14 +1,3 @@
-# mydocker
-
-在 boot2docker 中，默认的用户名和密码是：
-
-```
-user: docker pass: tcuser
-```
-
-修改虚拟机IP
-
-```
 @echo off
 setlocal enabledelayedexpansion
 set machine=%1
@@ -34,8 +23,3 @@ echo route add default gw ^<gateway ip address here^> ^| docker-machine ssh %mac
 docker-machine ssh %machine% "sudo cat /var/run/udhcpc.eth0.pid | xargs sudo kill -9"
 
 docker-machine ssh %machine% "sudo ifconfig eth0 192.168.%ipx%.%ipy% netmask 255.255.255.0 broadcast 192.168.%ipx%.255 up"
-```
-
-changeip.bat <machine-name> 99 100
-
-docker-machine regenerate-certs <machine-name>
